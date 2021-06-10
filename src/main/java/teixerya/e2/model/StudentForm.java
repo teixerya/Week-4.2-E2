@@ -25,9 +25,9 @@ public class StudentForm implements Serializable {
     @NotBlank
     private String street = "";
 
-    private boolean programCoop = false;
+    private String city = "";
 
-    private boolean programInternship = false;
+    private String state = "";
 
     public StudentForm() {
     }
@@ -72,20 +72,20 @@ public class StudentForm implements Serializable {
         this.street = street;
     }
 
-    public boolean isProgramCoop() {
-        return programCoop;
+    public String getCity() {
+        return city;
     }
 
-    public void setProgramCoop(boolean coop) {
-        this.programCoop = coop;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public boolean isProgramInternship() {
-        return programInternship;
+    public String getState() {
+        return state;
     }
 
-    public void setProgramInternship(boolean internship) {
-        this.programInternship = internship;
+    public void setState(String state) {
+        this.state = state;
     }
 
 

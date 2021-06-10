@@ -26,7 +26,7 @@ public class StudentDataServiceImpl implements StudentDataService {
         customer.setEmail(form.getEmail());
         customer.setStreet(form.getStreet());
         customer.setCity(form.getCity());
-        customer.setProgramInternship(form.isProgramInternship());
+        customer.setState(form.getState());
     }
 
     private static void copyEntityToForm(StudentEntity customer, StudentForm form){
@@ -35,8 +35,8 @@ public class StudentDataServiceImpl implements StudentDataService {
         form.setLastName(customer.getLastName());
         form.setEmail(customer.getEmail());
         form.setStreet(customer.getStreet());
-        form.setProgramCoop(customer.isProgramCoop());
-        form.setProgramInternship(customer.isProgramInternship());
+        form.setCity(customer.getCity());
+        form.setState(customer.getState());
     }
 
     public void insertStudentForm(StudentForm form) {

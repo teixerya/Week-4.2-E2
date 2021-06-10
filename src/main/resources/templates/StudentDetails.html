@@ -29,16 +29,16 @@
             <span class="output" th:text="*{email}">Email</span>
         </p>
         <p>
-            <label class="group_label">Year:</label>
-            <span class="output" th:text="*{programYear}">1</span>
+            <label class="group_label">Street:</label>
+            <span class="output" th:text="*{street}">1</span>
         </p>
         <p>
-            <label class="group_label">Co-op:</label>
-            <span class="output" th:text="*{programCoop}">yes</span>
+            <label class="group_label">City:</label>
+            <span class="output" th:text="*{city}">yes</span>
         </p>
         <p>
-            <label class="group_label">Internship:</label>
-            <span class="output" th:text="*{programInternship}">no</span>
+            <label class="group_label">state:</label>
+            <span class="output" th:text="*{state}">no</span>
         </p>
     </div>
     <p><a href="EditStudent.html" th:href="@{../EditStudent(customer_id=${customer.customer_id})}">Edit Student</a></p>
