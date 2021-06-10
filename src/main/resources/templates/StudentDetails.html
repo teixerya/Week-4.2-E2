@@ -25,8 +25,8 @@
             <span class="output" th:text="*{lastName}">Simpson</span>
         </p>
         <p>
-            <label class="group_label">Program:</label>
-            <span class="output" th:text="*{programName}">Computer Programmer</span>
+            <label class="group_label">Email:</label>
+            <span class="output" th:text="*{email}">Email</span>
         </p>
         <p>
             <label class="group_label">Year:</label>
@@ -41,7 +41,7 @@
             <span class="output" th:text="*{programInternship}">no</span>
         </p>
     </div>
-    <p><a href="EditStudent.html" th:href="@{../EditStudent(id=${customer.id})}">Edit Student</a></p>
+    <p><a href="EditStudent.html" th:href="@{../EditStudent(customer_id=${customer.customer_id})}">Edit Student</a></p>
     <p><a href="Index.html" th:href="@{../Index}">Index</a></p>
     <p><a href="AddStudent.html" th:href="@{../AddStudent}">Add Student</a></p>
     <p><a href="ListStudents.html" th:href="@{../ListStudents}">List Students</a></p>

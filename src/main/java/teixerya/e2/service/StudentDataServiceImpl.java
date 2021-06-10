@@ -20,30 +20,30 @@ public class StudentDataServiceImpl implements StudentDataService {
     }
 
     private static void copyFormToEntity(StudentForm form, StudentEntity customer){
-        //customer.setId(form.getId());
+        //customer.setCustomer_id(form.getCustomer_id());
         customer.setFirstName(form.getFirstName());
         customer.setLastName(form.getLastName());
-        customer.setProgramName(form.getProgramName());
-        customer.setProgramYear(form.getProgramYear());
-        customer.setProgramCoop(form.isProgramCoop());
+        customer.setEmail(form.getEmail());
+        customer.setStreet(form.getStreet());
+        customer.setCity(form.getCity());
         customer.setProgramInternship(form.isProgramInternship());
     }
 
-    private static void copyEntityToForm(StudentEntity student, StudentForm form){
-        form.setId(student.getId());
-        form.setFirstName(student.getFirstName());
-        form.setLastName(student.getLastName());
-        form.setProgramName(student.getProgramName());
-        form.setProgramYear(student.getProgramYear());
-        form.setProgramCoop(student.isProgramCoop());
-        form.setProgramInternship(student.isProgramInternship());
+    private static void copyEntityToForm(StudentEntity customer, StudentForm form){
+        form.setCustomer_id(customer.getId());
+        form.setFirstName(customer.getFirstName());
+        form.setLastName(customer.getLastName());
+        form.setEmail(customer.getEmail());
+        form.setStreet(customer.getStreet());
+        form.setProgramCoop(customer.isProgramCoop());
+        form.setProgramInternship(customer.isProgramInternship());
     }
 
     public void insertStudentForm(StudentForm form) {
         StudentEntity student = new StudentEntity();
         copyFormToEntity(form, student);
         student = studentDataRepository.save(student);
-        form.setId(student.getId());
+        form.setCustomer_id(student.getId());
     }
 
     public List<StudentForm> getAllStudentForms() {
@@ -65,23 +65,23 @@ public class StudentDataServiceImpl implements StudentDataService {
         studentDataRepository.deleteById(id);
     }
 
-    public StudentForm getStudentForm(int id) {
-        Optional<StudentEntity> result = studentDataRepository.findById(id);
+    public StudentForm getStudentForm(int customer_id) {
+        Optional<StudentEntity> result = studentDataRepository.findById(customer_id);
         if(result.isPresent()){
             StudentForm form = new StudentForm();
-            StudentEntity student = result.get();
-            copyEntityToForm(student, form);
+            StudentEntity customer = result.get();
+            copyEntityToForm(customer, form);
             return form;
         }
         return null;
     }
 
     public void updateStudentForm(StudentForm form) {
-        Optional<StudentEntity> result = studentDataRepository.findById(form.getId());
+        Optional<StudentEntity> result = studentDataRepository.findById(form.getCustomer_id());
         if(result.isPresent()){
-            StudentEntity student = result.get();
-            copyFormToEntity(form, student);
-            studentDataRepository.save(student);
+            StudentEntity customer = result.get();
+            copyFormToEntity(form, customer);
+            studentDataRepository.save(customer);
             //studentRepository.flush();
         }
     }

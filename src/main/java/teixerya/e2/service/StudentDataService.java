@@ -12,9 +12,9 @@ public interface StudentDataService {
 
     void deleteAllStudentForms();
 
-    void deleteStudentForm(int id);
+    void deleteStudentForm(int customer_id);
 
-    StudentForm getStudentForm(int id);
+    StudentForm getStudentForm(int customer_id);
 
     void updateStudentForm(StudentForm form);
 }

@@ -8,10 +8,10 @@ import java.io.Serializable;
 @Table(name = "customer")
 public class StudentEntity implements Serializable {
 
-    @Column(name = "id")
+    @Column(name = "customer_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer customer_id;
 
     @Column(name = "first_name")
     private String firstName = "";
@@ -19,27 +19,27 @@ public class StudentEntity implements Serializable {
     @Column(name = "last_name")
     private String lastName = "";
 
-    @Column(name = "program_name")
-    private String programName = "";
+    @Column(name = "email")
+    private String email = "";
 
-    @Column(name = "program_year")
-    private Integer programYear = 0;
+    @Column(name = "street")
+    private String street = "";
 
-    @Column(name = "program_coop")
-    private Boolean programCoop = false;
+    @Column(name = "city")
+    private String city = "";
 
-    @Column(name = "program_internship")
-    private Boolean programInternship = false;
+    @Column(name = "state")
+    private String state = "";
 
     public StudentEntity(){
     };
 
     public Integer getId() {
-        return id;
+        return customer_id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.customer_id = customer_id;
     }
 
     public String getFirstName() {
@@ -58,36 +58,37 @@ public class StudentEntity implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getProgramName() {
-        return programName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setProgramName(String programName) {
-        this.programName = programName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Integer getProgramYear() {
-        return programYear;
+    public String getStreet() {
+        return street;
     }
 
-    public void setProgramYear(Integer programYear) {
-        this.programYear = programYear;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public Boolean isProgramCoop() {
-        return programCoop;
+    public String getCity() {
+        return city;
     }
 
-    public void setProgramCoop(Boolean programCoop) {
-        this.programCoop = programCoop;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public Boolean isProgramInternship() {
-        return programInternship;
+    public String getState() {
+        return state;
     }
 
-    public void setProgramInternship(Boolean programInternship) {
-        this.programInternship = programInternship;
+    public void setState(String state) {
+        this.state = state;
     }
+
 }
 

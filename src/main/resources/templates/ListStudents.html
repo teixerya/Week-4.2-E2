@@ -25,11 +25,11 @@
             <td th:text="${s.firstName}">Bart</td>
             <td th:text="${s.lastName}">Simpson</td>
             <td>
-                <a href="StudentDetails.html" th:href="@{StudentDetails/{id}(id=${s.id})}">Details</a>
+                <a href="StudentDetails.html" th:href="@{StudentDetails/{customer_id}(customer_id=${s.customer_id})}">Details</a>
                 &nbsp;|&nbsp;
-                <a href="EditStudent.html" th:href="@{EditStudent(id=${s.id})}">Edit</a>
+                <a href="EditStudent.html" th:href="@{EditStudent(customer_id=${s.customer_id})}">Edit</a>
                 &nbsp;|&nbsp;
-                <a href="DeleteStudent.html" th:href="@{DeleteStudent(id=${s.id})}">Delete</a>
+                <a href="DeleteStudent.html" th:href="@{DeleteStudent(customer_id=${s.customer_id})}">Delete</a>
             </td>
         </tr>
         <!--/*-->

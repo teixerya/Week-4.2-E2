@@ -62,19 +62,19 @@ import java.util.List;
             } else {
                 logger.trace("the user inputs are correct");
                 studentDataService.insertStudentForm(form);
-                return "redirect:ConfirmInsert/" + form.getId();
+                return "redirect:ConfirmInsert/" + form.getCustomer_id();
             }
         }
 
-        @GetMapping("/ConfirmInsert/{id}")
-        public String confirmInsert(@PathVariable(name = "id") String strId, Model model){
+        @GetMapping("/ConfirmInsert/{customer_id}")
+        public String confirmInsert(@PathVariable(name = "customer_id") String strId, Model model){
             logger.trace("confirmInsert() is called");
             try {
-                int id = Integer.parseInt(strId);
+                int customer_id = Integer.parseInt(strId);
                 logger.trace("looking for the data in the database");
-                StudentForm form = studentDataService.getStudentForm(id);
+                StudentForm form = studentDataService.getStudentForm(customer_id);
                 if (form == null) {
-                    logger.trace("no data for this id=" + id);
+                    logger.trace("no data for this id=" + customer_id);
                     return "DataNotFound";
                 } else {
                     logger.trace("showing the data");
@@ -102,16 +102,16 @@ import java.util.List;
             return "redirect:ListStudents";
         }
 
-        @GetMapping("StudentDetails/{id}")
-        public String studentDetails(@PathVariable String id, Model model){
+        @GetMapping("StudentDetails/{customer_id}")
+        public String studentDetails(@PathVariable String customer_id, Model model){
             logger.trace("studentDetails() is called");
             try {
-                StudentForm form = studentDataService.getStudentForm(Integer.parseInt(id));
+                StudentForm form = studentDataService.getStudentForm(Integer.parseInt(customer_id));
                 if (form != null) {
                     model.addAttribute("customer", form);
                     return "StudentDetails"; // show the customer data in the form to edit
                 } else {
-                    logger.trace("no data for this id=" + id);
+                    logger.trace("no data for this id=" + customer_id);
                     return "DataNotFound";
                 }
             } catch (NumberFormatException e) {
@@ -122,12 +122,12 @@ import java.util.List;
 
         // a user clicks "Delete" link (in the table) to "DeleteStudent"
         @GetMapping("/DeleteStudent")
-        public String deleteStudent(@RequestParam String id, Model model) {
+        public String deleteStudent(@RequestParam String customer_id, Model model) {
             logger.trace("deleteStudent() is called");
             try {
-                StudentForm form = studentDataService.getStudentForm(Integer.parseInt(id));
+                StudentForm form = studentDataService.getStudentForm(Integer.parseInt(customer_id));
                 if (form != null) {
-                    model.addAttribute("student", form);
+                    model.addAttribute("customer", form);
                     return "DeleteStudent"; // ask "Do you really want to remove?"
                 } else {
                     return "redirect:ListStudents";
@@ -140,10 +140,10 @@ import java.util.List;
         // a user clicks "Remove Record" button in "DeleteStudent" page,
         // the form submits the data to "RemoveStudent"
         @PostMapping("/RemoveStudent")
-        public String removeStudent(@RequestParam String id) {
+        public String removeStudent(@RequestParam String customer_id) {
             logger.trace("removeStudent() is called");
             try {
-                studentDataService.deleteStudentForm(Integer.parseInt(id));
+                studentDataService.deleteStudentForm(Integer.parseInt(customer_id));
             } catch (NumberFormatException e) {
                 logger.trace("the id is missing or not an integer");
             }
@@ -152,16 +152,16 @@ import java.util.List;
 
         // a user clicks "Edit" link (in the table) to "EditStudent"
         @GetMapping("/EditStudent")
-        public String editStudent(@RequestParam String id, Model model) {
+        public String editStudent(@RequestParam String customer_id, Model model) {
             logger.trace("editStudent() is called");
             try {
-                StudentForm form = studentDataService.getStudentForm(Integer.parseInt(id));
+                StudentForm form = studentDataService.getStudentForm(Integer.parseInt(customer_id));
                 if (form != null) {
                     model.addAttribute("form", form);
                     model.addAttribute("programs", programs);
                     return "EditStudent";
                 } else {
-                    logger.trace("no data for this id=" + id);
+                    logger.trace("no data for this id=" + customer_id);
                     return "redirect:ListStudents";
                 }
             } catch (NumberFormatException e) {
@@ -186,8 +186,8 @@ import java.util.List;
             } else {
                 logger.trace("the user inputs are correct");
                 studentDataService.updateStudentForm(form);
-                logger.debug("id = " + form.getId());
-                return "redirect:StudentDetails/" + form.getId();
+                logger.debug("id = " + form.getCustomer_id());
+                return "redirect:StudentDetails/" + form.getCustomer_id();
             }
         }
     }

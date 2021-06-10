@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 public class StudentForm implements Serializable {
 
-    private int id = 0;
+    private int customer_id = 0;
 
     @NotBlank
     @Size(max = 30)
@@ -19,14 +19,11 @@ public class StudentForm implements Serializable {
     @Pattern(regexp = "[A-Za-z]*")
     private String lastName = "";
 
-    @NotBlank
-    @Pattern(regexp = "(Computer Programmer|Systems Technology|Engineering Technician|Systems Technician)?")
-    private String programName = "";
 
-    @NotNull
-    @Min(1)
-    @Max(3)
-    private int programYear = 1;
+    private String email = "";
+
+    @NotBlank
+    private String street = "";
 
     private boolean programCoop = false;
 
@@ -35,12 +32,12 @@ public class StudentForm implements Serializable {
     public StudentForm() {
     }
 
-    public int getId() {
-        return id;
+    public int getCustomer_id() {
+        return customer_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
     public String getFirstName() {
@@ -59,20 +56,20 @@ public class StudentForm implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getProgramName() {
-        return programName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setProgramName(String program) {
-        this.programName = program;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getProgramYear() {
-        return programYear;
+    public String getStreet() {
+        return street;
     }
 
-    public void setProgramYear(int year) {
-        this.programYear = year;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public boolean isProgramCoop() {
