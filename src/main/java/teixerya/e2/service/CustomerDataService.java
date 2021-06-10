@@ -7,10 +7,7 @@ import java.util.List;
 public interface CustomerDataService {
 
 
-
     List<CustomerForm> getAllCustomerForms();
-
-
 
     CustomerForm getCustomerForm(int customer_id);
 

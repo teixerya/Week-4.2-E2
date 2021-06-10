@@ -14,15 +14,15 @@ import java.util.List;
 
 
 @Controller
-    public class StudentDataController {
+    public class CustomerDataController {
 
-        private final Logger logger = LoggerFactory.getLogger(StudentDataController.class);
+        private final Logger logger = LoggerFactory.getLogger(CustomerDataController.class);
 
 
 
         private final CustomerDataService customerDataService;
 
-        public StudentDataController(CustomerDataService customerDataService){
+        public CustomerDataController(CustomerDataService customerDataService){
             this.customerDataService = customerDataService;
         }
 
