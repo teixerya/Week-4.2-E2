@@ -14,7 +14,7 @@
 </head>
 <body>
 <main>
-    <h1>Student Details</h1>
+    <h1>Customer Details</h1>
     <div th:object="${customer}">
         <p>
             <label class="group_label">First Name:</label>
@@ -37,12 +37,12 @@
             <span class="output" th:text="*{city}">yes</span>
         </p>
         <p>
-            <label class="group_label">state:</label>
+            <label class="group_label">State:</label>
             <span class="output" th:text="*{state}">no</span>
         </p>
     </div>
 
-    <p><a href="Index.html" th:href="@{../Index}">Index</a></p>
+
 
     <p><a href="CustomerList.html" th:href="@{../ListStudents}">List Students</a></p>
 </main>
