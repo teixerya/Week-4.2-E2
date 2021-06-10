@@ -4,7 +4,7 @@ import teixerya.e2.model.StudentForm;
 
 import java.util.List;
 
-public interface StudentDataService {
+public interface CustomerDataService {
 
     void insertStudentForm(StudentForm form);
 

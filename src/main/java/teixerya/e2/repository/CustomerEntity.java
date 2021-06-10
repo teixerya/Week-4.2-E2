@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "customer")
-public class StudentEntity implements Serializable {
+public class CustomerEntity implements Serializable {
 
     @Column(name = "customer_id")
     @Id
@@ -31,7 +31,7 @@ public class StudentEntity implements Serializable {
     @Column(name = "state")
     private String state = "";
 
-    public StudentEntity(){
+    public CustomerEntity(){
     };
 
     public Integer getId() {

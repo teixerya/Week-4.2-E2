@@ -3,23 +3,23 @@ package teixerya.e2.service;
 
 import org.springframework.stereotype.Service;
 import teixerya.e2.model.StudentForm;
-import teixerya.e2.repository.StudentDataRepository;
-import teixerya.e2.repository.StudentEntity;
+import teixerya.e2.repository.CustomerDataRepository;
+import teixerya.e2.repository.CustomerEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StudentDataServiceImpl implements StudentDataService {
+public class CustomerDataServiceImpl implements CustomerDataService {
 
-    private final StudentDataRepository studentDataRepository;
+    private final CustomerDataRepository customerDataRepository;
 
-    StudentDataServiceImpl(StudentDataRepository studentDataRepository){
-        this.studentDataRepository = studentDataRepository;
+    CustomerDataServiceImpl(CustomerDataRepository customerDataRepository){
+        this.customerDataRepository = customerDataRepository;
     }
 
-    private static void copyFormToEntity(StudentForm form, StudentEntity customer){
+    private static void copyFormToEntity(StudentForm form, CustomerEntity customer){
         //customer.setCustomer_id(form.getCustomer_id());
         customer.setFirstName(form.getFirstName());
         customer.setLastName(form.getLastName());
@@ -29,7 +29,7 @@ public class StudentDataServiceImpl implements StudentDataService {
         customer.setState(form.getState());
     }
 
-    private static void copyEntityToForm(StudentEntity customer, StudentForm form){
+    private static void copyEntityToForm(CustomerEntity customer, StudentForm form){
         form.setCustomer_id(customer.getId());
         form.setFirstName(customer.getFirstName());
         form.setLastName(customer.getLastName());
@@ -40,16 +40,16 @@ public class StudentDataServiceImpl implements StudentDataService {
     }
 
     public void insertStudentForm(StudentForm form) {
-        StudentEntity student = new StudentEntity();
+        CustomerEntity student = new CustomerEntity();
         copyFormToEntity(form, student);
-        student = studentDataRepository.save(student);
+        student = customerDataRepository.save(student);
         form.setCustomer_id(student.getId());
     }
 
     public List<StudentForm> getAllStudentForms() {
         List<StudentForm> formList = new ArrayList<>();
-        List<StudentEntity> studentList = studentDataRepository.findAll();
-        for(StudentEntity student: studentList){
+        List<CustomerEntity> studentList = customerDataRepository.findAll();
+        for(CustomerEntity student: studentList){
             StudentForm form = new StudentForm();
             copyEntityToForm(student, form);
             formList.add(form);
@@ -58,18 +58,18 @@ public class StudentDataServiceImpl implements StudentDataService {
     }
 
     public void deleteAllStudentForms() {
-        studentDataRepository.deleteAll();
+        customerDataRepository.deleteAll();
     }
 
     public void deleteStudentForm(int id) {
-        studentDataRepository.deleteById(id);
+        customerDataRepository.deleteById(id);
     }
 
     public StudentForm getStudentForm(int customer_id) {
-        Optional<StudentEntity> result = studentDataRepository.findById(customer_id);
+        Optional<CustomerEntity> result = customerDataRepository.findById(customer_id);
         if(result.isPresent()){
             StudentForm form = new StudentForm();
-            StudentEntity customer = result.get();
+            CustomerEntity customer = result.get();
             copyEntityToForm(customer, form);
             return form;
         }
@@ -77,11 +77,11 @@ public class StudentDataServiceImpl implements StudentDataService {
     }
 
     public void updateStudentForm(StudentForm form) {
-        Optional<StudentEntity> result = studentDataRepository.findById(form.getCustomer_id());
+        Optional<CustomerEntity> result = customerDataRepository.findById(form.getCustomer_id());
         if(result.isPresent()){
-            StudentEntity customer = result.get();
+            CustomerEntity customer = result.get();
             copyFormToEntity(form, customer);
-            studentDataRepository.save(customer);
+            customerDataRepository.save(customer);
             //studentRepository.flush();
         }
     }
