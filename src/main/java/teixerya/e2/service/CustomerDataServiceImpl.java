@@ -2,7 +2,7 @@ package teixerya.e2.service;
 
 
 import org.springframework.stereotype.Service;
-import teixerya.e2.model.StudentForm;
+import teixerya.e2.model.CustomerForm;
 import teixerya.e2.repository.CustomerDataRepository;
 import teixerya.e2.repository.CustomerEntity;
 
@@ -19,7 +19,7 @@ public class CustomerDataServiceImpl implements CustomerDataService {
         this.customerDataRepository = customerDataRepository;
     }
 
-    private static void copyFormToEntity(StudentForm form, CustomerEntity customer){
+    private static void copyFormToEntity(CustomerForm form, CustomerEntity customer){
         //customer.setCustomer_id(form.getCustomer_id());
         customer.setFirstName(form.getFirstName());
         customer.setLastName(form.getLastName());
@@ -27,9 +27,10 @@ public class CustomerDataServiceImpl implements CustomerDataService {
         customer.setStreet(form.getStreet());
         customer.setCity(form.getCity());
         customer.setState(form.getState());
+        customer.setZipCode(form.getZipCode());
     }
 
-    private static void copyEntityToForm(CustomerEntity customer, StudentForm form){
+    private static void copyEntityToForm(CustomerEntity customer, CustomerForm form){
         form.setCustomer_id(customer.getId());
         form.setFirstName(customer.getFirstName());
         form.setLastName(customer.getLastName());
@@ -37,38 +38,28 @@ public class CustomerDataServiceImpl implements CustomerDataService {
         form.setStreet(customer.getStreet());
         form.setCity(customer.getCity());
         form.setState(customer.getState());
+        form.setZipCode(customer.getZipCode());
     }
 
-    public void insertStudentForm(StudentForm form) {
-        CustomerEntity student = new CustomerEntity();
-        copyFormToEntity(form, student);
-        student = customerDataRepository.save(student);
-        form.setCustomer_id(student.getId());
-    }
 
-    public List<StudentForm> getAllStudentForms() {
-        List<StudentForm> formList = new ArrayList<>();
+
+    public List<CustomerForm> getAllCustomerForms() {
+        List<CustomerForm> formList = new ArrayList<>();
         List<CustomerEntity> studentList = customerDataRepository.findAll();
         for(CustomerEntity student: studentList){
-            StudentForm form = new StudentForm();
+            CustomerForm form = new CustomerForm();
             copyEntityToForm(student, form);
             formList.add(form);
         }
         return formList;
     }
 
-    public void deleteAllStudentForms() {
-        customerDataRepository.deleteAll();
-    }
 
-    public void deleteStudentForm(int id) {
-        customerDataRepository.deleteById(id);
-    }
 
-    public StudentForm getStudentForm(int customer_id) {
+    public CustomerForm getCustomerForm(int customer_id) {
         Optional<CustomerEntity> result = customerDataRepository.findById(customer_id);
         if(result.isPresent()){
-            StudentForm form = new StudentForm();
+            CustomerForm form = new CustomerForm();
             CustomerEntity customer = result.get();
             copyEntityToForm(customer, form);
             return form;
@@ -76,14 +67,7 @@ public class CustomerDataServiceImpl implements CustomerDataService {
         return null;
     }
 
-    public void updateStudentForm(StudentForm form) {
-        Optional<CustomerEntity> result = customerDataRepository.findById(form.getCustomer_id());
-        if(result.isPresent()){
-            CustomerEntity customer = result.get();
-            copyFormToEntity(form, customer);
-            customerDataRepository.save(customer);
-            //studentRepository.flush();
-        }
-    }
+
+
 }
 

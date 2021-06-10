@@ -5,7 +5,7 @@ import com.sun.istack.NotNull;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 
-public class StudentForm implements Serializable {
+public class CustomerForm implements Serializable {
 
     private int customer_id = 0;
 
@@ -29,7 +29,9 @@ public class StudentForm implements Serializable {
 
     private String state = "";
 
-    public StudentForm() {
+    private String zipCode = "";
+
+    public CustomerForm() {
     }
 
     public int getCustomer_id() {
@@ -88,6 +90,12 @@ public class StudentForm implements Serializable {
         this.state = state;
     }
 
+    public String getZipCode() {
+        return zipCode;
+    }
 
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
 }
 

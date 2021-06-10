@@ -31,6 +31,10 @@ public class CustomerEntity implements Serializable {
     @Column(name = "state")
     private String state = "";
 
+    @Column(name = "zip_code")
+    private String zipCode = "";
+
+
     public CustomerEntity(){
     };
 
@@ -90,5 +94,12 @@ public class CustomerEntity implements Serializable {
         this.state = state;
     }
 
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
 }
 

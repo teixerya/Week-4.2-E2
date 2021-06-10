@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import teixerya.e2.model.StudentForm;
+import teixerya.e2.model.CustomerForm;
 import teixerya.e2.service.CustomerDataService;
 
 import java.util.List;
@@ -18,10 +18,7 @@ import java.util.List;
 
         private final Logger logger = LoggerFactory.getLogger(StudentDataController.class);
 
-        private static final String[] programs = {
-                "--- Select Program ---",
-                "Computer Programmer", "Systems Technology",
-                "Engineering Technician", "Systems Technician"};
+
 
         private final CustomerDataService customerDataService;
 
@@ -29,13 +26,10 @@ import java.util.List;
             this.customerDataService = customerDataService;
         }
 
-
-
-
         @GetMapping(value={"/", "/ListStudents"})
         public ModelAndView listStudents() {
             logger.trace("listStudents() is called");
-            List<StudentForm> list = customerDataService.getAllStudentForms();
+            List<CustomerForm> list = customerDataService.getAllCustomerForms();
             return new ModelAndView("CustomerList",
                     "customers", list);
         }
@@ -45,7 +39,7 @@ import java.util.List;
         public String customerDetails(@PathVariable String customer_id, Model model){
             logger.trace("customerDetails() is called");
             try {
-                StudentForm form = customerDataService.getStudentForm(Integer.parseInt(customer_id));
+                CustomerForm form = customerDataService.getCustomerForm(Integer.parseInt(customer_id));
                 if (form != null) {
                     model.addAttribute("customer", form);
                     return "CustomerDetails"; // show the customer data in the form to edit

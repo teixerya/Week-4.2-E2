@@ -1,20 +1,18 @@
 package teixerya.e2.service;
 
-import teixerya.e2.model.StudentForm;
+import teixerya.e2.model.CustomerForm;
 
 import java.util.List;
 
 public interface CustomerDataService {
 
-    void insertStudentForm(StudentForm form);
 
-    List<StudentForm> getAllStudentForms();
 
-    void deleteAllStudentForms();
+    List<CustomerForm> getAllCustomerForms();
 
-    void deleteStudentForm(int customer_id);
 
-    StudentForm getStudentForm(int customer_id);
 
-    void updateStudentForm(StudentForm form);
+    CustomerForm getCustomerForm(int customer_id);
+
+
 }
