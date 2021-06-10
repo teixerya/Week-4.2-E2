@@ -92,7 +92,7 @@ import java.util.List;
             logger.trace("listStudents() is called");
             List<StudentForm> list = studentDataService.getAllStudentForms();
             return new ModelAndView("ListStudents",
-                    "students", list);
+                    "customers", list);
         }
 
         @GetMapping("/DeleteAll")
@@ -108,8 +108,8 @@ import java.util.List;
             try {
                 StudentForm form = studentDataService.getStudentForm(Integer.parseInt(id));
                 if (form != null) {
-                    model.addAttribute("student", form);
-                    return "StudentDetails"; // show the student data in the form to edit
+                    model.addAttribute("customer", form);
+                    return "StudentDetails"; // show the customer data in the form to edit
                 } else {
                     logger.trace("no data for this id=" + id);
                     return "DataNotFound";

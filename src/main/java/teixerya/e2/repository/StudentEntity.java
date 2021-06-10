@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "student")
+@Table(name = "customer")
 public class StudentEntity implements Serializable {
 
     @Column(name = "id")

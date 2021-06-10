@@ -19,14 +19,14 @@ public class StudentDataServiceImpl implements StudentDataService {
         this.studentDataRepository = studentDataRepository;
     }
 
-    private static void copyFormToEntity(StudentForm form, StudentEntity student){
-        //student.setId(form.getId());
-        student.setFirstName(form.getFirstName());
-        student.setLastName(form.getLastName());
-        student.setProgramName(form.getProgramName());
-        student.setProgramYear(form.getProgramYear());
-        student.setProgramCoop(form.isProgramCoop());
-        student.setProgramInternship(form.isProgramInternship());
+    private static void copyFormToEntity(StudentForm form, StudentEntity customer){
+        //customer.setId(form.getId());
+        customer.setFirstName(form.getFirstName());
+        customer.setLastName(form.getLastName());
+        customer.setProgramName(form.getProgramName());
+        customer.setProgramYear(form.getProgramYear());
+        customer.setProgramCoop(form.isProgramCoop());
+        customer.setProgramInternship(form.isProgramInternship());
     }
 
     private static void copyEntityToForm(StudentEntity student, StudentForm form){
